@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 //Name: Sorawit Ongsiriporn
 //ID: 6288030
@@ -12,7 +10,7 @@ public class Kalculator {
 	//Class attributes go here
 	private ArrayList<Double> num=new ArrayList<Double>();
 	private ArrayList<Double> sort=new ArrayList<Double>();
-	private double sum,avg,sD;
+	private double sum,avg,sD,min,max;
 	//**************************************
 	/**
 	 * Constructor is the fist method to be call at instantiation of a Kalculator object.
@@ -122,7 +120,13 @@ public class Kalculator {
 	{
 		//******INSERT YOUR CODE HERE***********
 		if(num.size()>0) {
-			return Collections.max(num);
+			max=num.get(0);
+			for(int i=1;i<num.size();i++) {
+				if(max<num.get(i)) {
+					max=num.get(i);
+				}
+			}
+			return max;
 		}else {
 			return 0;
 		}
@@ -137,7 +141,13 @@ public class Kalculator {
 	{
 		//******INSERT YOUR CODE HERE***********
 		if(num.size()>0) {
-			return Collections.min(num);
+			min=num.get(0);
+			for(int i=1;i<num.size();i++) {
+				if(min>num.get(i)) {
+					min=num.get(i);
+				}
+			}
+			return min;
 		}else {
 			return 0;
 		}
@@ -152,7 +162,14 @@ public class Kalculator {
 	public double[] getMaxK(int k)
 	{
 		//******INSERT YOUR CODE HERE***********
-		sort = num;
+		if(num.size()>=k) {
+			sorter();
+			double[] maxk=new double[k];
+			for(int i=0;i<k;i++) {
+				maxk[i]=sort.get(sort.size()-1-i);
+			}
+			return maxk;
+		}
 		return null;
 		//**************************************
 	}
@@ -165,6 +182,14 @@ public class Kalculator {
 	public double[] getMinK(int k)
 	{
 		//******INSERT YOUR CODE HERE***********
+		if(num.size()>=k) {
+			sorter();
+			double[] mink=new double[k];
+			for(int i=0;i<k;i++) {
+				mink[i]=sort.get(i);
+			}
+			return mink;
+		}
 		return null;
 		//**************************************
 	}
@@ -183,7 +208,18 @@ public class Kalculator {
 		//**************************************
 	}
 
-	public String toString() {
-		return "["+num+"]";
+	public void sorter() {
+		Double temp;
+		sort = (ArrayList)num.clone();
+		for(int i=0;i<sort.size()-1;i++) {
+			for(int j=0;j<sort.size()-i-1;j++) {
+				if(sort.get(j)>sort.get(j+1)) {
+					temp=sort.get(j);
+					sort.set(j, sort.get(j+1));
+					sort.set(j+1, temp);
+				}
+			}
+		}
 	}
+
 }
