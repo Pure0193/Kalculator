@@ -86,9 +86,8 @@ public class Kalculator {
 		if(num.size()>0) {
 			avg=sum/num.size();
 			return avg;
-		}else {
-			return 0;
 		}
+		return 0;
 		//**************************************
 	}
 
@@ -127,9 +126,8 @@ public class Kalculator {
 				}
 			}
 			return max;
-		}else {
-			return 0;
 		}
+		return 0;
 		//**************************************
 	}
 
@@ -148,9 +146,8 @@ public class Kalculator {
 				}
 			}
 			return min;
-		}else {
-			return 0;
 		}
+		return 0;
 		//**************************************
 	}
 
