@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public class Kalculator {
 	//******INSERT YOUR CODE HERE***********
 	//Class attributes go here
-	private ArrayList<Double> num=new ArrayList<Double>();
+	private ArrayList<Double> num=new ArrayList<Double>(); // collect data to 'num' array
 	private ArrayList<Double> sort=new ArrayList<Double>();
-	private double sum,avg,sD,min,max;
+	private double sum,avg,sD,min,max; // sD=standard deviation
 	//**************************************
 	/**
 	 * Constructor is the fist method to be call at instantiation of a Kalculator object.
@@ -205,10 +205,12 @@ public class Kalculator {
 		//**************************************
 	}
 
+	
+	// new method(my own), use to sort array
 	public void sorter() {
 		Double temp;
-		sort = (ArrayList)num.clone();
-		for(int i=0;i<sort.size()-1;i++) {
+		sort = (ArrayList)num.clone(); // copy elements to another array
+		for(int i=0;i<sort.size()-1;i++) { // bubble sort
 			for(int j=0;j<sort.size()-i-1;j++) {
 				if(sort.get(j)>sort.get(j+1)) {
 					temp=sort.get(j);
